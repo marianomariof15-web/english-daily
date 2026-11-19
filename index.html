@@ -81,7 +81,26 @@ function render(){
  $("days").textContent=new Set(history.map(x=>x.date)).size;
  $("level").value=level;
 }
-function speak(t){if(!("speechSynthesis"in window)){alert("Seu navegador não oferece áudio de pronúncia.");return}let u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;speechSynthesis.speak(u)}
+
+function speak(t){
+  if(!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)){
+    alert("Seu navegador não oferece suporte ao áudio.");
+    return;
+  }
+  const s=window.speechSynthesis;
+  s.cancel();
+  const u=new SpeechSynthesisUtterance(t);
+  u.lang="en-US";
+  u.rate=0.85;
+  u.pitch=1;
+  u.volume=1;
+  const voices=s.getVoices();
+  const v=voices.find(x=>x.lang==="en-US") || voices.find(x=>x.lang.startsWith("en-"));
+  if(v) u.voice=v;
+  u.onerror=()=>alert("Não foi possível reproduzir o áudio. Tente novamente.");
+  s.speak(u);
+}
+
 window.speak=speak;
 $("completeBtn").onclick=()=>{if(!done.includes(current)){done.push(current);history.push({title:lessons[current].title,date:new Date().toLocaleDateString("pt-BR")});save();render()}};
 $("nextBtn").onclick=()=>{current=(current+1)%lessons.length;save();render()};
