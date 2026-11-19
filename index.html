@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173b70">
+<meta name="description" content="Aprenda inglês um pouquinho todos os dias com o English Daily.">
+<link rel="manifest" href="manifest.json">
+<title>English Daily</title>
+<style>
+:root{--blue:#173b70;--blue2:#24569a;--red:#d62828;--ink:#172033;--muted:#667085;--paper:#f5f7fb;--white:#fff;--line:#e5e9f0;--green:#168653}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(120deg,var(--blue),#24569a);color:#fff;padding:22px 18px 26px;border-bottom:5px solid var(--red)}
+.top{max-width:980px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:23px;font-weight:850;letter-spacing:-.6px}.brand span{color:#ffdddd}
+.tag{font-size:12px;opacity:.88;margin-top:4px}.streak{border:1px solid #ffffff55;border-radius:14px;padding:9px 12px;font-size:13px;white-space:nowrap}
+main{max-width:980px;margin:22px auto;padding:0 16px 40px}
+.hero{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:18px;box-shadow:0 8px 24px #173b700d}
+.hero h1{font-size:clamp(23px,4vw,32px);margin:0 0 8px;color:var(--blue)}.hero p{margin:0;color:var(--muted);line-height:1.5}.flag{font-size:42px}
+.grid{display:grid;grid-template-columns:1.35fr .85fr;gap:16px;margin-top:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #173b7008}
+.card h2{font-size:18px;margin:0 0 14px;color:var(--blue)}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:var(--red)}
+.phrase{padding:13px 0;border-bottom:1px solid var(--line)}.phrase:last-child{border:0}
+.eng{font-size:19px;font-weight:750;color:var(--blue)}.pt{color:var(--muted);margin-top:4px;font-size:14px}.pron{font-size:13px;color:#8a5360;margin-top:4px}
+button,select{font:inherit}button{border:0;border-radius:12px;padding:11px 15px;font-weight:750;cursor:pointer}
+.primary{background:var(--red);color:white}.secondary{background:#eaf0f8;color:var(--blue)}.small{padding:8px 11px;font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+select{width:100%;padding:11px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);margin:8px 0 14px}
+.progress{height:10px;background:#e9edf4;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:linear-gradient(90deg,var(--red),#f16a6a);width:0;transition:.3s}
+.stat{font-size:28px;font-weight:850;color:var(--blue)}.muted{color:var(--muted);font-size:13px}
+.quiz-option{display:block;width:100%;text-align:left;background:#f5f7fb;border:1px solid var(--line);margin:8px 0;color:var(--ink)}
+.quiz-option:focus,.quiz-option:hover{border-color:var(--blue2)}.feedback{font-weight:700;margin-top:12px;min-height:22px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.tab{background:#e8edf5;color:var(--blue)}.tab.active{background:var(--blue);color:#fff}
+.panel{display:none}.panel.active{display:block}
+.history-item{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero{align-items:flex-start}.streak{font-size:11px}.card{padding:17px}}
+</style>
+</head>
+<body>
+<header><div class="top"><div><div class="brand">ENGLISH <span>DAILY</span> 🇺🇸</div><div class="tag">Seu inglês, um pouquinho melhor a cada dia.</div></div><div class="streak">🔥 <b id="days">0</b> dias de estudo</div></div></header>
+<main>
+<section class="hero"><div><div class="eyebrow">Sua jornada começa aqui</div><h1>Let's learn English!</h1><p>Aprenda no seu ritmo com frases úteis, pronúncia e exercícios rápidos.</p></div><div class="flag">🇺🇸</div></section>
+<nav class="tabs">
+<button class="tab active" data-tab="lesson">Lição de hoje</button><button class="tab" data-tab="practice">Praticar</button><button class="tab" data-tab="progress">Meu progresso</button>
+</nav>
+<section id="lesson" class="panel active">
+<div class="grid">
+<div class="card"><div class="eyebrow" id="lessonLabel">LIÇÃO 1 · INICIANTE</div><h2 id="lessonTitle">Cumprimentos</h2><div id="phrases"></div><div class="actions"><button class="primary" id="completeBtn">Concluir lição</button><button class="secondary" id="nextBtn">Próxima lição →</button></div></div>
+<div class="card"><h2>Seu nível</h2><label class="muted" for="level">Escolha seu nível de inglês</label><select id="level"><option value="Iniciante">Iniciante</option><option value="Básico">Básico</option><option value="Intermediário">Intermediário</option></select><div class="stat" id="completedCount">0</div><div class="muted">lições concluídas</div><div style="margin:17px 0 8px" class="progress"><div id="progressBar"></div></div><div class="muted" id="progressText">Continue estudando!</div><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><h2>Rotina de estudo</h2><p class="muted">Uma lição curta por dia já ajuda a criar consistência.</p><button class="secondary small" id="reminderBtn">Ativar lembrete neste aparelho</button><p class="muted" id="reminderStatus">O lembrete local funciona enquanto o aplicativo estiver aberto. Veja as instruções sobre notificações ao publicar.</p></div>
+</div>
+</section>
+<section id="practice" class="panel"><div class="card"><div class="eyebrow">TESTE RÁPIDO</div><h2>Como se diz “Bom dia” em inglês?</h2><div id="options"></div><div class="feedback" id="feedback"></div><button class="secondary small" id="newQuestion">Outra pergunta</button></div></section>
+<section id="progress" class="panel"><div class="grid"><div class="card"><h2>Seu progresso</h2><div class="stat" id="progressTotal">0%</div><div class="progress"><div id="progressBar2"></div></div><p class="muted" id="progressDetail">Você está começando sua jornada!</p></div><div class="card"><h2>Histórico</h2><div id="history"><p class="muted">Suas lições concluídas aparecerão aqui.</p></div></div></div></section>
+</main>
+<footer>English Daily · Feito para estudar um pouco todos os dias ❤️💙</footer>
+<script>
+const lessons=[
+{title:"Cumprimentos",level:"Iniciante",phrases:[["Hello!","Olá!","he-LÔU"],["Good morning!","Bom dia!","gud MÓR-nin"],["Good afternoon!","Boa tarde!","gud éf-ter-NÚN"],["How are you?","Como você está?","rau ar iú"],["I'm fine, thank you.","Estou bem, obrigado(a).","aim fáin, thénk iú"]]},
+{title:"Apresentações",level:"Iniciante",phrases:[["My name is...","Meu nome é...","mai neim iz"],["What is your name?","Qual é o seu nome?","uót iz iór neim"],["Nice to meet you.","Prazer em conhecer você.","náis tu mít iú"],["I am from Brazil.","Eu sou do Brasil.","ai ém from brə-ZÍL"],["I speak a little English.","Eu falo um pouco de inglês.","ai spík a lí-tol ínglish"]]},
+{title:"No dia a dia",level:"Iniciante",phrases:[["Please.","Por favor.","plíz"],["Thank you.","Obrigado(a).","thénk iú"],["You're welcome.","De nada.","iór uél-kam"],["Excuse me.","Com licença.","iks-KIÚZ mi"],["I don't understand.","Eu não entendo.","ai dont an-der-STÉND"]]},
+{title:"Comida e pedidos",level:"Básico",phrases:[["I'm hungry.","Estou com fome.","aim HÂN-gri"],["Can I have water?","Pode me trazer água?","kén ai rév uó-ter"],["The menu, please.","O cardápio, por favor.","dhə MÉN-iu plíz"],["How much is it?","Quanto custa?","rau match iz it"],["The food is delicious.","A comida está deliciosa.","dhə fúd iz di-LÍ-shəs"]]},
+{title:"Planos e rotina",level:"Intermediário",phrases:[["What are you doing tomorrow?","O que você vai fazer amanhã?","uót ar iú dú-in tu-MÓ-rou"],["I usually wake up early.","Eu geralmente acordo cedo.","ai iú-jua-li ueik ap ÊR-li"],["I'm looking forward to it.","Estou ansioso(a) por isso.","aim lú-kin fór-uərd tu it"],["Could you help me?","Você poderia me ajudar?","kud iú rélp mi"],["I'll think about it.","Vou pensar sobre isso.","ail think ə-BÁUT it"]]}
+];
+let current=Number(localStorage.getItem("ed_current")||0);
+let done=JSON.parse(localStorage.getItem("ed_done")||"[]");
+let history=JSON.parse(localStorage.getItem("ed_history")||"[]");
+let level=localStorage.getItem("ed_level")||"Iniciante";
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem("ed_current",current);localStorage.setItem("ed_done",JSON.stringify(done));localStorage.setItem("ed_history",JSON.stringify(history));localStorage.setItem("ed_level",level)}
+function render(){
+ current=Math.max(0,Math.min(current,lessons.length-1));const l=lessons[current];
+ $("lessonLabel").textContent=`LIÇÃO ${current+1} · ${l.level.toUpperCase()}`;$("lessonTitle").textContent=l.title;
+ $("phrases").innerHTML=l.phrases.map(p=>`<div class="phrase"><div class="eng">${p[0]}</div><div class="pt">${p[1]}</div><div class="pron">Pronúncia aproximada: ${p[2]}</div><div class="actions"><button class="secondary small" onclick="speak(${JSON.stringify(p[0])})">🔊 Ouvir</button></div></div>`).join("");
+ $("completeBtn").textContent=done.includes(current)?"Lição concluída ✓":"Concluir lição";
+ $("completedCount").textContent=done.length;$("progressBar").style.width=(done.length/lessons.length*100)+"%";$("progressText").textContent=`${done.length} de ${lessons.length} lições concluídas`;
+ $("progressTotal").textContent=Math.round(done.length/lessons.length*100)+"%";$("progressBar2").style.width=(done.length/lessons.length*100)+"%";
+ $("progressDetail").textContent=`Você concluiu ${done.length} de ${lessons.length} lições disponíveis.`;
+ $("history").innerHTML=history.length?history.slice().reverse().map(x=>`<div class="history-item">✓ ${x.title}<br><span class="muted">${x.date}</span></div>`).join(""):'<p class="muted">Suas lições concluídas aparecerão aqui.</p>';
+ $("days").textContent=new Set(history.map(x=>x.date)).size;
+ $("level").value=level;
+}
+function speak(t){if(!("speechSynthesis"in window)){alert("Seu navegador não oferece áudio de pronúncia.");return}let u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;speechSynthesis.speak(u)}
+window.speak=speak;
+$("completeBtn").onclick=()=>{if(!done.includes(current)){done.push(current);history.push({title:lessons[current].title,date:new Date().toLocaleDateString("pt-BR")});save();render()}};
+$("nextBtn").onclick=()=>{current=(current+1)%lessons.length;save();render()};
+$("level").onchange=e=>{level=e.target.value;let idx=lessons.findIndex(x=>x.level===level);current=idx<0?0:idx;save();render()};
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===b.dataset.tab));if(b.dataset.tab==="progress")render()});
+const questions=[{q:"Como se diz “Bom dia” em inglês?",a:["Good morning","Good night","Goodbye"],correct:0},{q:"O que significa “Thank you”?",a:["Por favor","Obrigado(a)","Desculpe"],correct:1},{q:"Como se diz “Meu nome é...”?",a:["How are you?","I am fine","My name is..."],correct:2},{q:"O que significa “I don't understand”?",a:["Eu não entendo","Eu estou bem","Eu quero água"],correct:0}];let qi=0;
+function question(){let q=questions[qi%questions.length];$("practice").querySelector("h2").textContent=q.q;$("options").innerHTML=q.a.map((a,i)=>`<button class="quiz-option" data-i="${i}">${a}</button>`).join("");$("feedback").textContent="";document.querySelectorAll(".quiz-option").forEach(b=>b.onclick=()=>{$("feedback").textContent=Number(b.dataset.i)===q.correct?"Muito bem! Resposta correta. 🎉":"Quase! Tente novamente."; $("feedback").style.color=Number(b.dataset.i)===q.correct?"var(--green)":"var(--red)";if(Number(b.dataset.i)===q.correct){document.querySelectorAll(".quiz-option").forEach(x=>x.disabled=true)}})}
+$("newQuestion").onclick=()=>{qi++;question()};question();
+let reminderTimer=null;
+$("reminderBtn").onclick=async()=>{if(!("Notification"in window)){ $("reminderStatus").textContent="Este navegador não oferece notificações.";return}
+let p=await Notification.requestPermission();if(p!=="granted"){$("reminderStatus").textContent="Permissão não concedida. Você pode ativá-la nas configurações do navegador.";return}
+$("reminderStatus").textContent="Permissão concedida. Enquanto o app estiver aberto, verificaremos o horário das 21h.";if(reminderTimer)clearInterval(reminderTimer);
+reminderTimer=setInterval(()=>{let d=new Date();let key="ed_notified_"+d.toDateString();if(d.getHours()===21&&d.getMinutes()===0&&!localStorage.getItem(key)){new Notification("Hora do English Daily!",{body:"Sua lição de inglês de hoje está esperando por você. 🇺🇸"});localStorage.setItem(key,"1")}},30000);
+};
+if("serviceWorker"in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+render();
+</script>
+</body></html>
