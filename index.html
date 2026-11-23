@@ -1,121 +1,973 @@
+
+
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#173b70">
-<meta name="description" content="Aprenda inglês um pouquinho todos os dias com o English Daily.">
-<link rel="manifest" href="manifest.json">
-<title>English Daily</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#123c78">
+
+<title>Daily English</title>
+
 <style>
-:root{--blue:#173b70;--blue2:#24569a;--red:#d62828;--ink:#172033;--muted:#667085;--paper:#f5f7fb;--white:#fff;--line:#e5e9f0;--green:#168653}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-header{background:linear-gradient(120deg,var(--blue),#24569a);color:#fff;padding:22px 18px 26px;border-bottom:5px solid var(--red)}
-.top{max-width:980px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{font-size:23px;font-weight:850;letter-spacing:-.6px}.brand span{color:#ffdddd}
-.tag{font-size:12px;opacity:.88;margin-top:4px}.streak{border:1px solid #ffffff55;border-radius:14px;padding:9px 12px;font-size:13px;white-space:nowrap}
-main{max-width:980px;margin:22px auto;padding:0 16px 40px}
-.hero{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:18px;box-shadow:0 8px 24px #173b700d}
-.hero h1{font-size:clamp(23px,4vw,32px);margin:0 0 8px;color:var(--blue)}.hero p{margin:0;color:var(--muted);line-height:1.5}.flag{font-size:42px}
-.grid{display:grid;grid-template-columns:1.35fr .85fr;gap:16px;margin-top:16px}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #173b7008}
-.card h2{font-size:18px;margin:0 0 14px;color:var(--blue)}
-.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:var(--red)}
-.phrase{padding:13px 0;border-bottom:1px solid var(--line)}.phrase:last-child{border:0}
-.eng{font-size:19px;font-weight:750;color:var(--blue)}.pt{color:var(--muted);margin-top:4px;font-size:14px}.pron{font-size:13px;color:#8a5360;margin-top:4px}
-button,select{font:inherit}button{border:0;border-radius:12px;padding:11px 15px;font-weight:750;cursor:pointer}
-.primary{background:var(--red);color:white}.secondary{background:#eaf0f8;color:var(--blue)}.small{padding:8px 11px;font-size:13px}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-select{width:100%;padding:11px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);margin:8px 0 14px}
-.progress{height:10px;background:#e9edf4;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:linear-gradient(90deg,var(--red),#f16a6a);width:0;transition:.3s}
-.stat{font-size:28px;font-weight:850;color:var(--blue)}.muted{color:var(--muted);font-size:13px}
-.quiz-option{display:block;width:100%;text-align:left;background:#f5f7fb;border:1px solid var(--line);margin:8px 0;color:var(--ink)}
-.quiz-option:focus,.quiz-option:hover{border-color:var(--blue2)}.feedback{font-weight:700;margin-top:12px;min-height:22px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.tab{background:#e8edf5;color:var(--blue)}.tab.active{background:var(--blue);color:#fff}
-.panel{display:none}.panel.active{display:block}
-.history-item{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.hero{align-items:flex-start}.streak{font-size:11px}.card{padding:17px}}
+
+:root {
+
+  --blue:#123c78;
+
+  --light:#eaf2ff;
+
+  --red:#e63946;
+
+  --white:#fff;
+
+  --text:#24334b;
+
+  --green:#198754;
+
+}
+
+*{box-sizing:border-box}
+
+body{
+
+  margin:0;
+
+  font-family:Arial,sans-serif;
+
+  background:#f3f6fc;
+
+  color:var(--text);
+
+}
+
+header{
+
+  background:linear-gradient(135deg,#123c78,#2463ad);
+
+  color:white;
+
+  padding:28px 18px;
+
+  text-align:center;
+
+}
+
+header h1{margin:0;font-size:30px}
+
+header p{margin:9px 0 0}
+
+.container{max-width:850px;margin:auto;padding:16px}
+
+nav{
+
+  display:flex;
+
+  gap:7px;
+
+  overflow-x:auto;
+
+  padding:12px 0;
+
+}
+
+nav button{
+
+  border:0;
+
+  background:#dce8fa;
+
+  color:var(--blue);
+
+  padding:12px 15px;
+
+  border-radius:10px;
+
+  font-weight:bold;
+
+  white-space:nowrap;
+
+  cursor:pointer;
+
+}
+
+nav button.active{background:var(--blue);color:white}
+
+.card{
+
+  background:white;
+
+  border-radius:15px;
+
+  padding:19px;
+
+  margin:14px 0;
+
+  box-shadow:0 3px 12px #17345b12;
+
+}
+
+h2{color:var(--blue);margin-top:0}
+
+h3{color:var(--blue)}
+
+.frase{
+
+  padding:12px;
+
+  margin:9px 0;
+
+  border-left:4px solid var(--red);
+
+  background:#f7f9fd;
+
+  border-radius:7px;
+
+}
+
+.frase strong{display:block;margin-bottom:5px}
+
+.translation{color:#617087;font-size:14px}
+
+.primary{
+
+  background:var(--blue);
+
+  color:white;
+
+  border:0;
+
+  padding:12px 18px;
+
+  border-radius:9px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+.secondary{
+
+  background:#eaf2ff;
+
+  color:var(--blue);
+
+  border:0;
+
+  padding:11px 15px;
+
+  border-radius:9px;
+
+  cursor:pointer;
+
+  font-weight:bold;
+
+}
+
+.option{
+
+  display:block;
+
+  width:100%;
+
+  text-align:left;
+
+  padding:13px;
+
+  margin:9px 0;
+
+  border:1px solid #d8e0ed;
+
+  background:white;
+
+  border-radius:9px;
+
+  cursor:pointer;
+
+}
+
+.option:active{background:#eaf2ff}
+
+.correct{background:#d8f3e3!important;border-color:#198754!important}
+
+.wrong{background:#ffe1e3!important;border-color:#e63946!important}
+
+textarea{
+
+  width:100%;
+
+  min-height:100px;
+
+  padding:13px;
+
+  border:1px solid #ccd6e5;
+
+  border-radius:10px;
+
+  font:inherit;
+
+  resize:vertical;
+
+}
+
+.hidden{display:none}
+
+.feedback{font-weight:bold;margin-top:12px}
+
+.progress{
+
+  height:13px;
+
+  background:#e4eaf3;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+}
+
+.progress div{height:100%;background:var(--green);width:0}
+
+footer{text-align:center;padding:25px;color:#758198;font-size:13px}
+
+.badge{
+
+  display:inline-block;
+
+  background:#eaf2ff;
+
+  color:var(--blue);
+
+  border-radius:20px;
+
+  padding:6px 10px;
+
+  font-size:12px;
+
+  font-weight:bold;
+
+}
+
 </style>
+
 </head>
+
 <body>
-<header><div class="top"><div><div class="brand">ENGLISH <span>DAILY</span> 🇺🇸</div><div class="tag">Seu inglês, um pouquinho melhor a cada dia.</div></div><div class="streak">🔥 <b id="days">0</b> dias de estudo</div></div></header>
-<main>
-<section class="hero"><div><div class="eyebrow">Sua jornada começa aqui</div><h1>Let's learn English!</h1><p>Aprenda no seu ritmo com frases úteis, pronúncia e exercícios rápidos.</p></div><div class="flag">🇺🇸</div></section>
-<nav class="tabs">
-<button class="tab active" data-tab="lesson">Lição de hoje</button><button class="tab" data-tab="practice">Praticar</button><button class="tab" data-tab="progress">Meu progresso</button>
+
+<header>
+
+  <div style="font-size:35px">✈️</div>
+
+  <h1>Daily English</h1>
+
+  <p>Learn English every day. Build your future!</p>
+
+</header>
+
+<div class="container">
+
+<nav>
+
+  <button class="active" onclick="showTab('lessons',this)">Lições</button>
+
+  <button onclick="showTab('texts',this)">Textos</button>
+
+  <button onclick="showTab('practice',this)">Frases</button>
+
+  <button onclick="showTab('writing',this)">Escrever</button>
+
+  <button onclick="showTab('progress',this)">Progresso</button>
+
 </nav>
-<section id="lesson" class="panel active">
-<div class="grid">
-<div class="card"><div class="eyebrow" id="lessonLabel">LIÇÃO 1 · INICIANTE</div><h2 id="lessonTitle">Cumprimentos</h2><div id="phrases"></div><div class="actions"><button class="primary" id="completeBtn">Concluir lição</button><button class="secondary" id="nextBtn">Próxima lição →</button></div></div>
-<div class="card"><h2>Seu nível</h2><label class="muted" for="level">Escolha seu nível de inglês</label><select id="level"><option value="Iniciante">Iniciante</option><option value="Básico">Básico</option><option value="Intermediário">Intermediário</option></select><div class="stat" id="completedCount">0</div><div class="muted">lições concluídas</div><div style="margin:17px 0 8px" class="progress"><div id="progressBar"></div></div><div class="muted" id="progressText">Continue estudando!</div><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><h2>Rotina de estudo</h2><p class="muted">Uma lição curta por dia já ajuda a criar consistência.</p><button class="secondary small" id="reminderBtn">Ativar lembrete neste aparelho</button><p class="muted" id="reminderStatus">O lembrete local funciona enquanto o aplicativo estiver aberto. Veja as instruções sobre notificações ao publicar.</p></div>
-</div>
+
+<section id="lessons">
+
+  <div class="card">
+
+    <span class="badge">COMECE AQUI</span>
+
+    <h2>Welcome to Daily English!</h2>
+
+    <p>Bem-vindo ao seu curso de inglês! Estude um pouco todos os dias e avance no seu aprendizado.</p>
+
+    <p>Escolha uma lição e aprenda novas expressões.</p>
+
+  </div>
+
+  <div id="lessonList"></div>
+
 </section>
-<section id="practice" class="panel"><div class="card"><div class="eyebrow">TESTE RÁPIDO</div><h2>Como se diz “Bom dia” em inglês?</h2><div id="options"></div><div class="feedback" id="feedback"></div><button class="secondary small" id="newQuestion">Outra pergunta</button></div></section>
-<section id="progress" class="panel"><div class="grid"><div class="card"><h2>Seu progresso</h2><div class="stat" id="progressTotal">0%</div><div class="progress"><div id="progressBar2"></div></div><p class="muted" id="progressDetail">Você está começando sua jornada!</p></div><div class="card"><h2>Histórico</h2><div id="history"><p class="muted">Suas lições concluídas aparecerão aqui.</p></div></div></div></section>
-</main>
-<footer>English Daily · Feito para estudar um pouco todos os dias ❤️💙</footer>
+
+<section id="texts" class="hidden">
+
+  <div class="card">
+
+    <h2>Reading practice 📖</h2>
+
+    <p>Leia o texto em inglês e depois confira a tradução em português.</p>
+
+    <div id="textContent"></div>
+
+    <button class="secondary" onclick="toggleTranslation()">Mostrar / esconder tradução</button>
+
+    <button class="primary" onclick="nextText()">Próximo texto →</button>
+
+  </div>
+
+</section>
+
+<section id="practice" class="hidden">
+
+  <div class="card">
+
+    <h2>Let's practice! 🎯</h2>
+
+    <p>Escolha a alternativa correta para cada pergunta.</p>
+
+    <div id="quizContent"></div>
+
+  </div>
+
+</section>
+
+<section id="writing" class="hidden">
+
+  <div class="card">
+
+    <h2>Writing practice ✍️</h2>
+
+    <p>Responda às perguntas em inglês. Não tenha medo de errar!</p>
+
+    <div id="writingContent"></div>
+
+  </div>
+
+</section>
+
+<section id="progress" class="hidden">
+
+  <div class="card">
+
+    <h2>My progress ⭐</h2>
+
+    <p>Acompanhe sua evolução no Daily English.</p>
+
+    <h3>Lições concluídas</h3>
+
+    <div class="progress"><div id="lessonBar"></div></div>
+
+    <p id="lessonCount">0 de 5 lições</p>
+
+    <h3>Exercícios respondidos corretamente</h3>
+
+    <div class="progress"><div id="quizBar"></div></div>
+
+    <p id="quizCount">0 acertos</p>
+
+    <h3>Respostas escritas</h3>
+
+    <p id="writingCount">0 respostas</p>
+
+    <button class="secondary" onclick="resetProgress()">Reiniciar progresso</button>
+
+  </div>
+
+</section>
+
+</div>
+
+<footer>Daily English • One day at a time ✈️</footer>
+
 <script>
-const lessons=[
-{title:"Cumprimentos",level:"Iniciante",phrases:[["Hello!","Olá!","he-LÔU"],["Good morning!","Bom dia!","gud MÓR-nin"],["Good afternoon!","Boa tarde!","gud éf-ter-NÚN"],["How are you?","Como você está?","rau ar iú"],["I'm fine, thank you.","Estou bem, obrigado(a).","aim fáin, thénk iú"]]},
-{title:"Apresentações",level:"Iniciante",phrases:[["My name is...","Meu nome é...","mai neim iz"],["What is your name?","Qual é o seu nome?","uót iz iór neim"],["Nice to meet you.","Prazer em conhecer você.","náis tu mít iú"],["I am from Brazil.","Eu sou do Brasil.","ai ém from brə-ZÍL"],["I speak a little English.","Eu falo um pouco de inglês.","ai spík a lí-tol ínglish"]]},
-{title:"No dia a dia",level:"Iniciante",phrases:[["Please.","Por favor.","plíz"],["Thank you.","Obrigado(a).","thénk iú"],["You're welcome.","De nada.","iór uél-kam"],["Excuse me.","Com licença.","iks-KIÚZ mi"],["I don't understand.","Eu não entendo.","ai dont an-der-STÉND"]]},
-{title:"Comida e pedidos",level:"Básico",phrases:[["I'm hungry.","Estou com fome.","aim HÂN-gri"],["Can I have water?","Pode me trazer água?","kén ai rév uó-ter"],["The menu, please.","O cardápio, por favor.","dhə MÉN-iu plíz"],["How much is it?","Quanto custa?","rau match iz it"],["The food is delicious.","A comida está deliciosa.","dhə fúd iz di-LÍ-shəs"]]},
-{title:"Planos e rotina",level:"Intermediário",phrases:[["What are you doing tomorrow?","O que você vai fazer amanhã?","uót ar iú dú-in tu-MÓ-rou"],["I usually wake up early.","Eu geralmente acordo cedo.","ai iú-jua-li ueik ap ÊR-li"],["I'm looking forward to it.","Estou ansioso(a) por isso.","aim lú-kin fór-uərd tu it"],["Could you help me?","Você poderia me ajudar?","kud iú rélp mi"],["I'll think about it.","Vou pensar sobre isso.","ail think ə-BÁUT it"]]}
+
+const lessons = [
+
+{
+
+ title:"Lesson 1 — Greetings",
+
+ subtitle:"Cumprimentos",
+
+ phrases:[
+
+ ["Hello!","Olá!"],
+
+ ["Good morning!","Bom dia!"],
+
+ ["Good afternoon!","Boa tarde!"],
+
+ ["Good evening!","Boa noite!"],
+
+ ["How are you?","Como você está?"],
+
+ ["I'm fine, thank you.","Estou bem, obrigado(a)."],
+
+ ["Nice to meet you.","Prazer em conhecer você."],
+
+ ["See you later!","Até mais!"]
+
+ ]
+
+},
+
+{
+
+ title:"Lesson 2 — Introductions",
+
+ subtitle:"Apresentações",
+
+ phrases:[
+
+ ["My name is Mariana.","Meu nome é Mariana."],
+
+ ["What is your name?","Qual é o seu nome?"],
+
+ ["I am from Brazil.","Eu sou do Brasil."],
+
+ ["I live in Rio de Janeiro.","Eu moro no Rio de Janeiro."],
+
+ ["I am learning English.","Estou aprendendo inglês."],
+
+ ["I work every day.","Eu trabalho todos os dias."],
+
+ ["I am a student.","Eu sou estudante."],
+
+ ["How old are you?","Quantos anos você tem?"]
+
+ ]
+
+},
+
+{
+
+ title:"Lesson 3 — Daily life",
+
+ subtitle:"No dia a dia",
+
+ phrases:[
+
+ ["I wake up early.","Eu acordo cedo."],
+
+ ["I go to work.","Eu vou trabalhar."],
+
+ ["I have breakfast.","Eu tomo café da manhã."],
+
+ ["I study English.","Eu estudo inglês."],
+
+ ["I am tired today.","Estou cansado(a) hoje."],
+
+ ["I get home at night.","Eu chego em casa à noite."],
+
+ ["I need some help.","Eu preciso de ajuda."],
+
+ ["Have a nice day!","Tenha um bom dia!"]
+
+ ]
+
+},
+
+{
+
+ title:"Lesson 4 — Food and orders",
+
+ subtitle:"Comida e pedidos",
+
+ phrases:[
+
+ ["I am hungry.","Estou com fome."],
+
+ ["I am thirsty.","Estou com sede."],
+
+ ["I would like some water.","Eu gostaria de água."],
+
+ ["Can I see the menu?","Posso ver o cardápio?"],
+
+ ["I love coffee.","Eu amo café."],
+
+ ["How much is it?","Quanto custa?"],
+
+ ["The food is delicious.","A comida está deliciosa."],
+
+ ["Can I have the bill?","Pode trazer a conta?"]
+
+ ]
+
+},
+
+{
+
+ title:"Lesson 5 — Plans and routine",
+
+ subtitle:"Planos e rotina",
+
+ phrases:[
+
+ ["What are you doing today?","O que você vai fazer hoje?"],
+
+ ["I am going to study.","Eu vou estudar."],
+
+ ["I have a plan.","Eu tenho um plano."],
+
+ ["Tomorrow is a new day.","Amanhã é um novo dia."],
+
+ ["I want to travel.","Eu quero viajar."],
+
+ ["I am happy today.","Estou feliz hoje."],
+
+ ["Let's go together!","Vamos juntos!"],
+
+ ["See you tomorrow!","Até amanhã!"]
+
+ ]
+
+}
+
 ];
-let current=Number(localStorage.getItem("ed_current")||0);
-let done=JSON.parse(localStorage.getItem("ed_done")||"[]");
-let history=JSON.parse(localStorage.getItem("ed_history")||"[]");
-let level=localStorage.getItem("ed_level")||"Iniciante";
-const $=id=>document.getElementById(id);
-function save(){localStorage.setItem("ed_current",current);localStorage.setItem("ed_done",JSON.stringify(done));localStorage.setItem("ed_history",JSON.stringify(history));localStorage.setItem("ed_level",level)}
-function render(){
- current=Math.max(0,Math.min(current,lessons.length-1));const l=lessons[current];
- $("lessonLabel").textContent=`LIÇÃO ${current+1} · ${l.level.toUpperCase()}`;$("lessonTitle").textContent=l.title;
- $("phrases").innerHTML=l.phrases.map(p=>`<div class="phrase"><div class="eng">${p[0]}</div><div class="pt">${p[1]}</div><div class="pron">Pronúncia aproximada: ${p[2]}</div><div class="actions"><button class="secondary small" onclick="speak(${JSON.stringify(p[0])})">🔊 Ouvir</button></div></div>`).join("");
- $("completeBtn").textContent=done.includes(current)?"Lição concluída ✓":"Concluir lição";
- $("completedCount").textContent=done.length;$("progressBar").style.width=(done.length/lessons.length*100)+"%";$("progressText").textContent=`${done.length} de ${lessons.length} lições concluídas`;
- $("progressTotal").textContent=Math.round(done.length/lessons.length*100)+"%";$("progressBar2").style.width=(done.length/lessons.length*100)+"%";
- $("progressDetail").textContent=`Você concluiu ${done.length} de ${lessons.length} lições disponíveis.`;
- $("history").innerHTML=history.length?history.slice().reverse().map(x=>`<div class="history-item">✓ ${x.title}<br><span class="muted">${x.date}</span></div>`).join(""):'<p class="muted">Suas lições concluídas aparecerão aqui.</p>';
- $("days").textContent=new Set(history.map(x=>x.date)).size;
- $("level").value=level;
+
+let completed = JSON.parse(localStorage.getItem("dailyLessons") || "[]");
+
+let correctAnswers = Number(localStorage.getItem("dailyCorrect") || 0);
+
+let answered = JSON.parse(localStorage.getItem("dailyAnswered") || "[]");
+
+let written = JSON.parse(localStorage.getItem("dailyWritten") || "{}");
+
+function save(){
+
+ localStorage.setItem("dailyLessons",JSON.stringify(completed));
+
+ localStorage.setItem("dailyCorrect",correctAnswers);
+
+ localStorage.setItem("dailyAnswered",JSON.stringify(answered));
+
+ localStorage.setItem("dailyWritten",JSON.stringify(written));
+
+ updateProgress();
+
 }
 
-function speak(t){
-  if(!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)){
-    alert("Seu navegador não oferece suporte ao áudio.");
-    return;
-  }
-  const s=window.speechSynthesis;
-  s.cancel();
-  const u=new SpeechSynthesisUtterance(t);
-  u.lang="en-US";
-  u.rate=0.85;
-  u.pitch=1;
-  u.volume=1;
-  const voices=s.getVoices();
-  const v=voices.find(x=>x.lang==="en-US") || voices.find(x=>x.lang.startsWith("en-"));
-  if(v) u.voice=v;
-  u.onerror=()=>alert("Não foi possível reproduzir o áudio. Tente novamente.");
-  s.speak(u);
+function showTab(id,button){
+
+ document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));
+
+ document.getElementById(id).classList.remove("hidden");
+
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+
+ button.classList.add("active");
+
+ if(id==="progress") updateProgress();
+
 }
 
-window.speak=speak;
-$("completeBtn").onclick=()=>{if(!done.includes(current)){done.push(current);history.push({title:lessons[current].title,date:new Date().toLocaleDateString("pt-BR")});save();render()}};
-$("nextBtn").onclick=()=>{current=(current+1)%lessons.length;save();render()};
-$("level").onchange=e=>{level=e.target.value;let idx=lessons.findIndex(x=>x.level===level);current=idx<0?0:idx;save();render()};
-document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===b.dataset.tab));if(b.dataset.tab==="progress")render()});
-const questions=[{q:"Como se diz “Bom dia” em inglês?",a:["Good morning","Good night","Goodbye"],correct:0},{q:"O que significa “Thank you”?",a:["Por favor","Obrigado(a)","Desculpe"],correct:1},{q:"Como se diz “Meu nome é...”?",a:["How are you?","I am fine","My name is..."],correct:2},{q:"O que significa “I don't understand”?",a:["Eu não entendo","Eu estou bem","Eu quero água"],correct:0}];let qi=0;
-function question(){let q=questions[qi%questions.length];$("practice").querySelector("h2").textContent=q.q;$("options").innerHTML=q.a.map((a,i)=>`<button class="quiz-option" data-i="${i}">${a}</button>`).join("");$("feedback").textContent="";document.querySelectorAll(".quiz-option").forEach(b=>b.onclick=()=>{$("feedback").textContent=Number(b.dataset.i)===q.correct?"Muito bem! Resposta correta. 🎉":"Quase! Tente novamente."; $("feedback").style.color=Number(b.dataset.i)===q.correct?"var(--green)":"var(--red)";if(Number(b.dataset.i)===q.correct){document.querySelectorAll(".quiz-option").forEach(x=>x.disabled=true)}})}
-$("newQuestion").onclick=()=>{qi++;question()};question();
-let reminderTimer=null;
-$("reminderBtn").onclick=async()=>{if(!("Notification"in window)){ $("reminderStatus").textContent="Este navegador não oferece notificações.";return}
-let p=await Notification.requestPermission();if(p!=="granted"){$("reminderStatus").textContent="Permissão não concedida. Você pode ativá-la nas configurações do navegador.";return}
-$("reminderStatus").textContent="Permissão concedida. Enquanto o app estiver aberto, verificaremos o horário das 21h.";if(reminderTimer)clearInterval(reminderTimer);
-reminderTimer=setInterval(()=>{let d=new Date();let key="ed_notified_"+d.toDateString();if(d.getHours()===21&&d.getMinutes()===0&&!localStorage.getItem(key)){new Notification("Hora do English Daily!",{body:"Sua lição de inglês de hoje está esperando por você. 🇺🇸"});localStorage.setItem(key,"1")}},30000);
-};
-if("serviceWorker"in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
-render();
+function renderLessons(){
+
+ const container=document.getElementById("lessonList");
+
+ container.innerHTML="";
+
+ lessons.forEach((lesson,index)=>{
+
+  const card=document.createElement("div");
+
+  card.className="card";
+
+  card.innerHTML=`<h2>${lesson.title}</h2><p>${lesson.subtitle}</p>`;
+
+  lesson.phrases.forEach(p=>{
+
+   const item=document.createElement("div");
+
+   item.className="frase";
+
+   item.innerHTML=`<strong>${p[0]}</strong><span class="translation">${p[1]}</span>`;
+
+   card.appendChild(item);
+
+  });
+
+  const btn=document.createElement("button");
+
+  btn.className="primary";
+
+  btn.textContent=completed.includes(index)?"✓ Lição concluída":"Marcar como concluída";
+
+  btn.onclick=()=>{
+
+   if(!completed.includes(index)) completed.push(index);
+
+   save();
+
+   renderLessons();
+
+  };
+
+  card.appendChild(btn);
+
+  container.appendChild(card);
+
+ });
+
+}
+
+const texts=[
+
+ {
+
+  title:"My daily routine",
+
+  english:"Hello! My name is Anna. I wake up at seven o'clock. I have breakfast and go to work. In the evening, I study English. I love learning new things.",
+
+  portuguese:"Olá! Meu nome é Anna. Eu acordo às sete horas. Tomo café da manhã e vou trabalhar. À noite, estudo inglês. Eu amo aprender coisas novas."
+
+ },
+
+ {
+
+  title:"My family",
+
+  english:"I have a small family. We like spending time together. On weekends, we watch movies, cook dinner and talk about our week. My family is very important to me.",
+
+  portuguese:"Eu tenho uma família pequena. Nós gostamos de passar tempo juntos. Nos finais de semana, assistimos filmes, preparamos o jantar e conversamos sobre nossa semana. Minha família é muito importante para mim."
+
+ },
+
+ {
+
+  title:"At the restaurant",
+
+  english:"Today I am at a restaurant. I would like a chicken sandwich and a glass of water. The food is delicious. After lunch, I want to have a coffee.",
+
+  portuguese:"Hoje estou em um restaurante. Eu gostaria de um sanduíche de frango e um copo de água. A comida está deliciosa. Depois do almoço, quero tomar um café."
+
+ },
+
+ {
+
+  title:"Learning English",
+
+  english:"I study English every day. Sometimes it is difficult, but I don't give up. I learn new words, read short texts and practice writing. Every day I get better.",
+
+  portuguese:"Eu estudo inglês todos os dias. Às vezes é difícil, mas não desisto. Aprendo palavras novas, leio textos curtos e pratico a escrita. Todos os dias eu melhoro."
+
+ },
+
+ {
+
+  title:"My dreams",
+
+  english:"I have many dreams for the future. I want to travel, meet new people and learn new things. English can help me achieve my goals. I believe in myself.",
+
+  portuguese:"Tenho muitos sonhos para o futuro. Quero viajar, conhecer novas pessoas e aprender coisas novas. O inglês pode me ajudar a alcançar meus objetivos. Eu acredito em mim."
+
+ }
+
+];
+
+let textIndex=0;
+
+let translationVisible=false;
+
+function renderText(){
+
+ const t=texts[textIndex];
+
+ document.getElementById("textContent").innerHTML=`
+
+ <h3>${t.title}</h3>
+
+ <div class="frase"><strong>${t.english}</strong></div>
+
+ <div id="translationBox" class="${translationVisible?"":"hidden"}">
+
+ <p class="translation">${t.portuguese}</p>
+
+ </div>
+
+ <p class="badge">Texto ${textIndex+1} de ${texts.length}</p>`;
+
+}
+
+function toggleTranslation(){
+
+ translationVisible=!translationVisible;
+
+ renderText();
+
+}
+
+function nextText(){
+
+ textIndex=(textIndex+1)%texts.length;
+
+ translationVisible=false;
+
+ renderText();
+
+}
+
+const questions=[
+
+ ["What does 'Hello' mean?","Olá","Tchau","Obrigado",0],
+
+ ["How do you say 'Bom dia'?","Good night","Good morning","Goodbye",1],
+
+ ["What does 'Thank you' mean?","Por favor","Desculpe","Obrigado(a)",2],
+
+ ["How do you say 'Eu estou com fome'?","I am hungry","I am happy","I am tired",0],
+
+ ["What does 'I work every day' mean?","Eu estudo todos os dias","Eu trabalho todos os dias","Eu durmo todos os dias",1],
+
+ ["How do you say 'Água'?","Food","Coffee","Water",2],
+
+ ["What does 'See you tomorrow' mean?","Até amanhã","Até logo","Bom dia",0],
+
+ ["How do you say 'Eu quero viajar'?","I want to eat","I want to travel","I want to sleep",1],
+
+ ["What does 'How are you?' mean?","Onde você mora?","Qual é seu nome?","Como você está?",2],
+
+ ["How do you say 'Eu estudo inglês'?","I study English","I speak Spanish","I like coffee",0],
+
+ ["What does 'I am tired' mean?","Estou feliz","Estou cansado(a)","Estou com fome",1],
+
+ ["How do you say 'Boa noite'?","Good morning","Good afternoon","Good evening",2]
+
+];
+
+let quizIndex=0;
+
+function renderQuiz(){
+
+ const q=questions[quizIndex];
+
+ const container=document.getElementById("quizContent");
+
+ container.innerHTML=`
+
+ <p><strong>Question ${quizIndex+1} of ${questions.length}</strong></p>
+
+ <h3>${q[0]}</h3>
+
+ <div id="options"></div>
+
+ <p id="quizFeedback" class="feedback"></p>
+
+ <button id="nextQuestion" class="primary hidden" onclick="nextQuestion()">Próxima pergunta →</button>`;
+
+ const options=document.getElementById("options");
+
+ [q[1],q[2],q[3]].forEach((answer,i)=>{
+
+  const button=document.createElement("button");
+
+  button.className="option";
+
+  button.textContent=answer;
+
+  button.onclick=()=>answerQuestion(i,button);
+
+  options.appendChild(button);
+
+ });
+
+}
+
+function answerQuestion(choice,button){
+
+ const q=questions[quizIndex];
+
+ const key=quizIndex;
+
+ if(answered.includes(key))return;
+
+ answered.push(key);
+
+ if(choice===q[4]){
+
+  correctAnswers++;
+
+  button.classList.add("correct");
+
+  document.getElementById("quizFeedback").textContent="Muito bem! Resposta correta! 🎉";
+
+  document.getElementById("quizFeedback").style.color="green";
+
+ }else{
+
+  button.classList.add("wrong");
+
+  document.getElementById("quizFeedback").textContent="Quase! A resposta correta é: "+q[q[4]+1];
+
+  document.getElementById("quizFeedback").style.color="#e63946";
+
+  document.querySelectorAll("#options button")[q[4]].classList.add("correct");
+
+ }
+
+ document.querySelectorAll("#options button").forEach(b=>b.disabled=true);
+
+ document.getElementById("nextQuestion").classList.remove("hidden");
+
+ save();
+
+}
+
+function nextQuestion(){
+
+ quizIndex=(quizIndex+1)%questions.length;
+
+ renderQuiz();
+
+}
+
+const writingQuestions=[
+
+ ["What is your name?","My name is Mariana."],
+
+ ["Where are you from?","I am from Brazil."],
+
+ ["Where do you live?","I live in Brazil."],
+
+ ["What do you do every day?","I work and study every day."],
+
+ ["What is your favorite food?","My favorite food is pizza."],
+
+ ["Do you like English?","Yes, I like English."],
+
+ ["What time do you wake up?","I wake up at seven o'clock."],
+
+ ["What do you do on weekends?","I watch movies on weekends."],
+
+ ["What is your dream?","My dream is to travel."],
+
+ ["Why are you learning English?","I am learning English for my future."]
+
+];
+
+let writingIndex=0;
+
+function renderWriting(){
+
+ const q=writingQuestions[writingIndex];
+
+ const saved=written[writingIndex]||"";
+
+ document.getElementById("writingContent").innerHTML=`
+
+ <p><strong>Question ${writingIndex+1} of ${writingQuestions.length}</strong></p>
+
+ <h3>${q[0]}</h3>
+
+ <textarea id="writingAnswer" placeholder="Write your answer in English...">${saved}</textarea>
+
+ <p id="writingFeedback" class="feedback"></p>
+
+ <button class="primary" onclick="saveWriting()">Salvar resposta</button>
+
+ <button class="secondary" onclick="showExample()">Ver exemplo</button>
+
+ <button class="secondary" onclick="nextWriting()">Próxima pergunta →</button>
+
+ <p id="example" class="translation"></p>`;
+
+}
+
+function saveWriting(){
+
+ const value=document.getElementById("writingAnswer").value.trim();
+
+ if(!value){
+
+  document.getElementById("writingFeedback").textContent="Digite sua resposta antes de salvar.";
+
+  return;
+
+ }
+
+ written[writingIndex]=value;
+
+ save();
+
+ document.getElementById("writingFeedback").textContent="Resposta salva! Muito bem! ✨";
+
+ document.getElementById("writingFeedback").style.color="green";
+
+}
+
+function showExample(){
+
+ document.getElementById("example").textContent="Exemplo: "+writingQuestions[writingIndex][1];
+
+}
+
+function nextWriting(){
+
+ writingIndex=(writingIndex+1)%writingQuestions.length;
+
+ renderWriting();
+
+}
+
+function updateProgress(){
+
+ const lessonPercent=(completed.length/lessons.length)*100;
+
+ document.getElementById("lessonBar").style.width=lessonPercent+"%";
+
+ document.getElementById("lessonCount").textContent=completed.length+" de "+lessons.length+" lições concluídas";
+
+ const quizPercent=(correctAnswers/questions.length)*100;
+
+ document.getElementById("quizBar").style.width=quizPercent+"%";
+
+ document.getElementById("quizCount").textContent=correctAnswers+" acertos";
+
+ document.getElementById("writingCount").textContent=Object.keys(written).length+" respostas salvas";
+
+}
+
+function resetProgress(){
+
+ if(confirm("Tem certeza que deseja reiniciar todo o seu progresso?")){
+
+  completed=[];
+
+  correctAnswers=0;
+
+  answered=[];
+
+  written={};
+
+  save();
+
+  renderLessons();
+
+  renderQuiz();
+
+  renderWriting();
+
+ }
+
+}
+
+renderLessons();
+
+renderText();
+
+renderQuiz();
+
+renderWriting();
+
+updateProgress();
+
 </script>
-</body></html>
+
+</body>
+
+</html>
